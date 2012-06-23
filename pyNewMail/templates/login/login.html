@@ -1,0 +1,50 @@
+{% extends "base/base.tpl" %}
+{% block title %}电子邮箱入侵系统{% endblock %}
+
+{% block style %}
+#Layer1 {
+	position:absolute;
+	width:628px;
+	height:104px;
+	z-index:1;
+	left: 211px;
+	top: 91px;
+}
+#Layer2 {
+	position:absolute;
+	width:626px;
+	height:228px;
+	z-index:2;
+	left: 217px;
+	top: 144px;
+	background-color: #ECE9D8;
+}
+.STYLE1 {
+	font-size: 24px;
+	font-weight: bold;
+}
+{% endblock %}
+
+{% block content %}
+<div id="Layer2">
+  <form id="form1" name="form1" method="post" action="/login/login/">
+  {% csrf_token %}
+    <table width="100%" border="0" align="center" cellpadding="10" cellspacing="10">
+      <tr>
+	  <td colspan="2"><div align="center" class="STYLE1">电子邮箱入侵系统</div></td>
+      </tr>
+	  <tr>
+        <td width="32%" align="center"><div align="right">用户名：</div></td>
+        <td width="68%"><input type="text" name="u" value="admin"/></td>
+      </tr>
+      <tr>
+        <td align="center"><div align="right">密    	码：</div></td>
+        <td><input type="password" name="p" value="zhonghe168"/></td>
+      </tr>
+      <tr>
+        <td height="41" colspan="2" align="center"><input type="submit" name="Submit" value="提交" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+{% endblock %}

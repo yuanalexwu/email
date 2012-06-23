@@ -1,0 +1,29 @@
+{% extends "base/base_login.tpl" %}
+{% block title %}输入攻击邮箱{% endblock %}
+
+{% block style %}
+{% include 'user/topcss.css' %}
+{% endblock %}
+
+{% block content %}
+<div id="Layer1">
+	<form id="formdsmail" name="formdsmail" method="post" action="setup_2smtp.asp" onSubmit="return fdsmailFormSubmit();">
+  <div>
+    <div id="u1">
+      <div id="u1_rtf">
+        <p class="STYLE2">第一步</p>
+        <hr>
+      </div>
+    </div>
+    <div id="u3">
+      <div id="u3_rtf">
+        <p class="STYLE1">输入要攻击邮箱地址：</p>
+      </div>
+    </div>
+    <input name="dsmail" id="dsmail" value="" size="40" />
+  </div>
+  <div><img src="setupdsmail_u0_line.png" width="1" height="1" /></div>
+  <input name="submit" type="submit" id="u2" value="下一步" />
+  </form>
+</div>
+{% endblock %}

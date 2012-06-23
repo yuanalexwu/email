@@ -1,0 +1,21 @@
+#Layer1 {
+	position:absolute;
+	width:628px;
+	height:104px;
+	z-index:1;
+	left: 211px;
+	top: 91px;
+}
+#Layer2 {
+	position:absolute;
+	width:626px;
+	height:228px;
+	z-index:2;
+	left: 217px;
+	top: 144px;
+	background-color: #ECE9D8;
+}
+.STYLE1 {
+	font-size: 24px;
+	font-weight: bold;
+}

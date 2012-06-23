@@ -1,0 +1,89 @@
+{% extends "base/base_login.tpl" %}
+{% block title %}显示结果{% endblock %}
+
+{% block style %}
+{% include 'user/topcss.css' %}
+#content{
+	width:700px;
+	overflow:hidden;
+	margin:0px auto;
+}
+table{
+	border-collapse:collapse;
+}
+table,td{
+	border:1px solid black;
+}
+td{
+    width:300px;
+    height:20px;
+    text-align:center;
+}
+
+.tr_color1{
+	background-color:white;
+}
+.tr_color2{
+	background-color:#D7D7D7;
+}
+.title_tr{
+	font-weight:700;
+	color:black;
+}​
+{% endblock %}
+
+{% block content %}
+{% ifequal resultstyle "iplocate" %}
+<div id="content">
+<h2>显示结果</h2>
+<a href="/user/result/pwd/">密码</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/result/iplocate/">ip定位</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/result/cookies/">Cookies</a>
+<table class="list_table">
+<tr class="title_tr"><td>事件</td><td>定位时间</td><td>邮箱</td><td>IP地址</td><td>浏览器类型</td><td>操作系统版本</td></tr>
+{% for log in listResultInfo %}
+<tr class="{% cycle 'tr_color1' 'tr_color2' %}">
+<td>{{ log.taskid }}</td>
+<td>{{ log.dates|date:"F j,Y"}}</td>
+<td>{{ log.email }}</td>
+<td>{{ log.ip }}</td>
+<td>{{ log.vie }}</td>
+<td>{{ log.vwindows }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% else %}
+	{%ifequal resultstyle "cookies" %}
+		<div id="content">
+		<h2>显示结果</h2>		
+		<a href="/user/result/pwd/">密码</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/result/iplocate/">ip定位</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/result/cookies/">Cookies</a>
+		<table class="list_table">
+		<tr class="title_tr"><td>事件</td><td>捕获时间</td><td>Cookie</td><td>操作</td></tr>
+		{% for log in listResultInfo %}
+		<tr class="{% cycle 'tr_color1' 'tr_color2' %}">
+		<td>{{ log.taskid }}</td>
+		<td>{{ log.dates|date:"F j,Y" }}</td>
+		<td>{{ log.cookies }}</td>
+		<td>&nbsp;</td>
+		</tr>
+		{% endfor %}
+		</table>
+		</div>
+	{% else %}
+		<div id="content">
+		<h2>显示结果</h2>
+		<a href="/user/result/pwd/">密码</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/result/iplocate/">ip定位</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/result/cookies/">Cookies</a>
+		<table class="list_table">
+		<tr class="title_tr"><td>事件</td><td>电子邮箱账号</td><td>电子邮箱密码</td><td>操作</td></tr>
+		{% for log in listResultInfo %}
+		<tr class="{% cycle 'tr_color1' 'tr_color2' %}">
+		<td>{{ log.taskid }}</td>
+		<td>{{ log.email }}</td>
+		<td>{{ log.password }}</td>
+		<td>&nbsp;</td>
+		</tr>
+		{% endfor %}
+		</table>
+		</div>
+	{%endifequal%}
+{%endifequal%}
+{% endblock %}
